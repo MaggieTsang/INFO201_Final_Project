@@ -5,6 +5,7 @@ library(dplyr)
 library(png)
 
 source("./script/chart_year_sexualMinority.R")
+source("./script/gender_characteristics.R")
 
 marvel.data <- read.csv("data/marvel-wikia-data.csv", stringsAsFactors = FALSE)
 colnames(marvel.data)[13]  <- "YEAR"
@@ -21,6 +22,18 @@ shinyServer(function(input, output) {
       marvel.data <- marvel.data %>% filter(SEX == gender.selected)
     }
     return(YearSexuality(marvel.data))
+  })
+  
+  # Gender vs Characteristics Tab
+  output$circularPlot <- renderPlot({
+    char_selected <- input$char
+    return(GenderCharacteristic(marvel.data,char_selected))
+  })
+  output$table <- renderTable({
+    return(GC_table(marvel.data))
+  })
+  output$summary <- renderText({
+    return(GC_Summary())
   })
   
   # Another Tab functions here

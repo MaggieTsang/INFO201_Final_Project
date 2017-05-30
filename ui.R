@@ -2,6 +2,7 @@
 
 library(shiny)
 library(plotly)
+library(ggplot2)
 
 source("./script/chart_year_sexualMinority.R")
 source("./script/introduction.R")
@@ -41,6 +42,33 @@ shinyUI(navbarPage(
                  plotlyOutput("year_gsm"),
                  h2("Conclusion:"),
                  h4(GSMoutro())
+               )
+             )
+           )),
+  # Gender Characteristics Tabs
+  tabPanel("Gender Characteristics",
+           fluidPage(
+             
+             # Application title
+             titlePanel("Gender vs Characteristic"),
+             
+             sidebarLayout(
+               sidebarPanel(
+                 radioButtons("char", "Characteristic type:",
+                              c("Good Character" = "Good",
+                                "Bad Character" = "Bad",
+                                "Neutral Character" = "Neutral")
+                 )
+               ),
+               
+               # Show a tabset that includes a plot, summary, and table view
+               # of the generated distribution
+               mainPanel(
+                 tabsetPanel(type = "tabs", 
+                             tabPanel("Plot", plotOutput("circularPlot")), 
+                             tabPanel("Table", tableOutput("table")),
+                             tabPanel("Summary", verbatimTextOutput("summary"))
+                 )
                )
              )
            )),
