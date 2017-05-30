@@ -2,6 +2,7 @@
 
 library(plotly)
 library(dplyr)
+library(png)
 
 source("./script/chart_year_sexualMinority.R")
 
@@ -19,7 +20,7 @@ shinyServer(function(input, output) {
     if(gender.selected != "***") {
       marvel.data <- marvel.data %>% filter(SEX == gender.selected)
     }
-    return(MarvelYearSexuality(marvel.data))
+    return(YearSexuality(marvel.data))
   })
   
   # Another Tab functions here

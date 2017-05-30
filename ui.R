@@ -14,8 +14,7 @@ shinyUI(navbarPage(
   tabPanel("Introduction",
            fluidPage(
              titlePanel("Introduction"),
-             mainPanel(h5(Intro()))
-             
+             mainPanel(h3(Intro()))
            )),
 
   # GSM and LGBT Tab
@@ -37,11 +36,11 @@ shinyUI(navbarPage(
                )),
                
                mainPanel(
-                 h3("Introduction:"),
-                 h5(GSMintro()),
+                 h2("Introduction:"),
+                 h4(GSMintro()),
                  plotlyOutput("year_gsm"),
-                 h3("Conclusion:"),
-                 h5(GSMoutro())
+                 h2("Conclusion:"),
+                 h4(GSMoutro())
                )
              )
            )),

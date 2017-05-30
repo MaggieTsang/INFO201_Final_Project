@@ -3,6 +3,8 @@ title:
 account: maggietsang
 server: shinyapps.io
 appId: 184597
-bundleId: 845012
+bundleId: 845043
 url: https://maggietsang.shinyapps.io/info201_final_project/
-when: 1496103551.34888
+when: 1496106460.76849
+asMultiple: FALSE
+asStatic: FALSE
