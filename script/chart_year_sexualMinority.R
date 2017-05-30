@@ -1,4 +1,3 @@
-# Maggie chart
 # Views trends between year and the appearance frequency of sexual minorities
 
 library(dplyr)
