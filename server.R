@@ -24,6 +24,11 @@ shinyServer(function(input, output) {
     return(YearSexuality(marvel.data))
   })
   
+  output$table_gsm <- renderTable({
+    return(GSMtable(marvel.data))
+  })
+  
+  
   # Gender vs Characteristics Tab
   output$circularPlot <- renderPlot({
     char_selected <- input$char

@@ -37,11 +37,21 @@ shinyUI(navbarPage(
                )),
                
                mainPanel(
-                 h2("Introduction:"),
-                 h4(GSMintro()),
-                 plotlyOutput("year_gsm"),
-                 h2("Conclusion:"),
-                 h4(GSMoutro())
+                 tabsetPanel(type = "tabs", 
+                             tabPanel("Intro",
+                                      h2("Introduction:"),
+                                      h4(GSMintro())
+                                      ), 
+                             tabPanel("Graph",
+                                      plotlyOutput("year_gsm")),
+                             tabPanel("Table",
+                                      tableOutput("table_gsm")),
+                             tabPanel("Summary",
+                                      h2("Summary:"),
+                                      h4(GSMoutro())
+                                      )
+                 )
+                 
                )
              )
            )),
