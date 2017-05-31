@@ -42,6 +42,10 @@ shinyServer(function(input, output) {
   })
   
   # Another Tab functions here
-  
+  output$circularPlot <- renderPlot({
+    selection <- input$variable
+    graph <- CircleGraph(df, selection)
+    return(graph)
+  })
   
 })
