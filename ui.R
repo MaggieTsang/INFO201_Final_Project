@@ -6,7 +6,7 @@ library(ggplot2)
 
 source("./script/chart_year_sexualMinority.R")
 source("./script/introduction.R")
-source('./script/genderID.R')
+source('./script/GenderID.R')
 source("./script/gender_characteristics.R")
 
 shinyUI(navbarPage(
@@ -86,26 +86,31 @@ shinyUI(navbarPage(
              )
            )),
   
-  # tatus tab
-  tabPanel('ID and Living Status for Gender',
-           # Application title
-           titlePanel('Gender in relation to ID and living characters'),
-           # Sidebar with a select input for both variables
-           sidebarLayout(
-             sidebarPanel(
-               selectInput("variable1", label = 'X', choices=list('Gender Axis' = "Gender")),
-               # Options for y axis
-               selectInput("variable2", label = 'Y', choices=list('Identification'))
-             ),
-             # Show a plot of the generated distribution
+  # Identification and Gender
+  tabPanel("Gender and Identification",
+           fluidPage(
+             
+             # Application title
+             titlePanel("Gender vs Identification"),
+             
+             sidebarLayout(
+               sidebarPanel(
+                 radioButtons("user", "Identification type:",
+                              list("Secret Identity" = "Secret",
+                                "Public Identity" = "Public",
+                                "No Dual Identity" = "None",
+                                "Known to Authorities Identity" = "Known")
+                 )
+
+               ),
              mainPanel(
                tabsetPanel(type = "tabs", 
                            tabPanel("Intro", h2("Introduction:"),h4(ID_Intro())),
-                           tabPanel("Plot", plotlyOutput('map')), 
+                           tabPanel("Plot", plotOutput('circlePlot')), 
                            tabPanel("Summary",h2("Summary:"), h4(ID_Summary())
                            )
                )
-               )
+             )
            )
-  )
+  ))
   ))
