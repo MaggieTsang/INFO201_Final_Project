@@ -112,5 +112,9 @@ GC_Intro <- function(){
 }
 
 GC_Summary <- function() {
-  return("As a general observation, Female has the higest proportion on Good Characteristic and male has the highest proportion on Bad characteristic. Agenda characters also have the highest proportion on bad characteristics but compare to male characters they have little less proportion. Also When we focus on neutral characteristics we can find the most characters are agenda. Base on this result we can assume that Women villains have weaker images to audience")
+  return("As a general observation, Female has the higest proportion on Good Characteristic and male has the highest proportion on Bad characteristic. 
+         Agenda characters also have the highest proportion on bad characteristics but compare to male characters they have little less proportion. 
+         Also When we focus on neutral characteristics we can find the most characters are agenda. 
+         Base on this result we can assume that Women villains have weaker images to audience.
+         Also we hope to see more strong and real image of womens in Comics and other media.")
 }
