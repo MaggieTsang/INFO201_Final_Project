@@ -42,13 +42,13 @@ shinyServer(function(input, output) {
     return(GC_Summary())
   })
   
-  # Another Tab functions here
+  # Living Status
   output$map <- renderPlotly({ 
     variable1.input <- switch(input$variable1, 
                               'Gender' = marvel.data$SEX)
     variable2.input <- switch(input$variable2, 
-                              'ID' = marvel.data$ID,
-                              'Alive' = marvel.data$ALIVE)
+                              'Identification' = marvel.data$ID,
+                              'Living Status' = marvel.data$ALIVE)
     return(graphData(marvel.data, variable1.input, variable2.input, input$variable1, input$variable2))
   }) 
 })

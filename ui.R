@@ -83,7 +83,7 @@ shinyUI(navbarPage(
              )
            )),
   
-  # Other Tabs
+  # tatus tab
   tabPanel('ID and Living Status for Gender',
            # Application title
            titlePanel('Gender in relation to ID and living characters'),
@@ -97,10 +97,11 @@ shinyUI(navbarPage(
              # Show a plot of the generated distribution
              mainPanel(
                h2("Introduction:"),
-               h4("This dataset is to show how gender affects the how a character identifies with their ID  and if they are living ."),
+               h4("This dataset is to show how gender affects the how a character identifies with their ID  and if they are living."),
                plotlyOutput('map'),
                h2("Conclusion:"),
                h4("In conclusion this dataset shows that the male and female characters are more prevalent than genderfluid characters. Even if comics are more welcoming to females they still aren't as open to the LBGT characters. In this graph you can see that genderfluid characters are underepresented compared to female or male genders")
+
              )
            )
   ),
