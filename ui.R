@@ -6,7 +6,7 @@ library(ggplot2)
 
 source("./script/chart_year_sexualMinority.R")
 source("./script/introduction.R")
-
+source('./script/genderID.R')
 
 shinyUI(navbarPage(
   "Comic Book Character Diversity",
@@ -84,26 +84,23 @@ shinyUI(navbarPage(
            )),
   
   # Other Tabs
-  tabPanel('Gender and ID',
-           fluidPage(    
-             # Application title
-             titlePanel('Gender vs ID'),
-             # Sidebar with a select input for variables
-             sidebarLayout(
-               sidebarPanel(
-                 selectInput("variable", label = 'ID', choices = list("Secret Identity" = "Secret", 
-                                                                      "Public Identity" = "Public", 
-                                                                      "No Dual Identity" = "None", 
-                                                                      "Known to Authorities Identity" = "Known"))
-               ),
-               # Suumary and Conclusion 
-               mainPanel(
-                 h2("Introduction:"),
-                 h4("This dataset is to show how gender affects the how a character identifies with their ID."),
-                 plotlyOutput("circularPlot"),
-                 h2("Conclusion:"),
-                 h4("In conclusion this dataset shows that the male characetrs are featured more than female characters.")
-               )
+  tabPanel('Gender and ID for Marvel Data',
+           # Application title
+           titlePanel('Gender in relation to ID and living characters'),
+           # Sidebar with a select input for both variables
+           sidebarLayout(
+             sidebarPanel(
+               selectInput("variable1", label = 'X', choices=list('Gender')),
+               # Options for y axis
+               selectInput("variable2", label = 'Y', choices=list('ID', 'Alive'))
+             ),
+             # Show a plot of the generated distribution
+             mainPanel(
+               h2("Introduction:"),
+               h4("This dataset is to show how gender affects the how a character identifies with their ID  and if they are living ."),
+               plotlyOutput('map'),
+               h2("Conclusion:"),
+               h4("In conclusion this dataset shows that the male and female characters are more prevalent than genderfluid characters. Even if comics are more welcoming to females they still aren't as open to the LBGT community.")
              )
            )
   ),

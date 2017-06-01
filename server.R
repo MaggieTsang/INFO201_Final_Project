@@ -6,6 +6,7 @@ library(png)
 
 source("./script/chart_year_sexualMinority.R")
 source("./script/gender_characteristics.R")
+source('./script/genderID.R')
 
 marvel.data <- read.csv("data/marvel-wikia-data.csv", stringsAsFactors = FALSE)
 colnames(marvel.data)[13]  <- "YEAR"
@@ -42,10 +43,13 @@ shinyServer(function(input, output) {
   })
   
   # Another Tab functions here
-  output$circularPlot <- renderPlot({
-    selection <- input$variable
-    graph <- CircleGraph(df, selection)
-    return(graph)
-  })
+  output$map <- renderPlotly({ 
+    variable1.input <- switch(input$variable1, 
+                              'Gender' = marvel.data$SEX)
+    variable2.input <- switch(input$variable2, 
+                              'ID' = marvel.data$ID,
+                              'Alive' = marvel.data$ALIVE)
+    return(graphData(marvel.data, variable1.input, variable2.input, input$variable1, input$variable2))
+  }) 
   
 })
