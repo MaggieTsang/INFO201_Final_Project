@@ -95,7 +95,7 @@ shinyUI(navbarPage(
              sidebarPanel(
                selectInput("variable1", label = 'X', choices=list('Gender Axis' = "Gender")),
                # Options for y axis
-               selectInput("variable2", label = 'Y', choices=list('Identification', "Alive Characters"))
+               selectInput("variable2", label = 'Y', choices=list('Identification'))
              ),
              # Show a plot of the generated distribution
              mainPanel(

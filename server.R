@@ -44,8 +44,7 @@ shinyServer(function(input, output) {
     variable1.input <- switch(input$variable1, 
                               'Gender' = marvel.data$SEX)
     variable2.input <- switch(input$variable2, 
-                              'Identification' = marvel.data$ID,
-                              'Living Status' = marvel.data$ALIVE)
+                              'Identification' = marvel.data$ID)
     return(graphData(marvel.data, variable1.input, variable2.input, input$variable1, input$variable2))
   }) 
 })

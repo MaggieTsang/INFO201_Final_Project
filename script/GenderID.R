@@ -13,7 +13,7 @@ graphData <- function(dataset, variable1, variable2, xvar, yvar) {
 }
 
 ID_Intro <- function() {
-  return("This dataset is to show how gender affects the how a character identifies with their ID  and if they are living.")
+  return("This dataset is to show how gender affects how a character identifies as private identity, public, none identity, or unknown.")
 }
 
 ID_Summary <- function () {
