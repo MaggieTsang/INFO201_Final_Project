@@ -90,9 +90,9 @@ shinyUI(navbarPage(
            # Sidebar with a select input for both variables
            sidebarLayout(
              sidebarPanel(
-               selectInput("variable1", label = 'X', choices=list('Gender')),
+               selectInput("variable1", label = 'X', choices=list('Gender Axis' = "Gender")),
                # Options for y axis
-               selectInput("variable2", label = 'Y', choices=list('ID', 'Alive'))
+               selectInput("variable2", label = 'Y', choices=list('Identification' = "ID", "Alive Characters" = 'Alive'))
              ),
              # Show a plot of the generated distribution
              mainPanel(
@@ -100,7 +100,7 @@ shinyUI(navbarPage(
                h4("This dataset is to show how gender affects the how a character identifies with their ID  and if they are living ."),
                plotlyOutput('map'),
                h2("Conclusion:"),
-               h4("In conclusion this dataset shows that the male and female characters are more prevalent than genderfluid characters. Even if comics are more welcoming to females they still aren't as open to the LBGT community.")
+               h4("In conclusion this dataset shows that the male and female characters are more prevalent than genderfluid characters. Even if comics are more welcoming to females they still aren't as open to the LBGT characters. In this graph you can see that genderfluid characters are underepresented compared to female or male genders")
              )
            )
   ),

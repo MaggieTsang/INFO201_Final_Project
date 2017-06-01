@@ -1,8 +1,8 @@
 # Server-side of webpage
 
+library(shiny)
 library(plotly)
 library(dplyr)
-library(png)
 
 source("./script/chart_year_sexualMinority.R")
 source("./script/gender_characteristics.R")
