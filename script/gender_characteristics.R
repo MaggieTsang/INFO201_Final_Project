@@ -100,10 +100,17 @@ GC_table <- function(dataset){
                      round(table$bad/table$total *100, digit=0), 
                      round(table$good/table$total *100, digit=0),
                      round(table$neutral/table$total *100, digit=0))
-  colnames(pcnt) <- c("Gender","Bad","Good","Neutral")
+  colnames(pcnt) <- c("Gender","Bad (%)","Good(%)","Neutral(%)")
   return(pcnt)
 }
 
+GC_Intro <- function(){
+  return("Media is one of the most powerful tool that can influence to our view on the World. 
+         We were interested in how media communicate images of the sexes with different characteristics.
+         In our perspective, we used to see male characters are more strong and powerful than female characters.
+         So we calculate each genders proportion on different characters.")
+}
+
 GC_Summary <- function() {
-  return("As a general observation, Female has the higest proportion on Good Characteristic and male has the highest proportion on Bad characteristic. Agenda characters also have the highest proportion on bad characteristics but compare to male characters they have little less proportion. Also When we focus on neutral characteristics we can find the most characters are agenda")
+  return("As a general observation, Female has the higest proportion on Good Characteristic and male has the highest proportion on Bad characteristic. Agenda characters also have the highest proportion on bad characteristics but compare to male characters they have little less proportion. Also When we focus on neutral characteristics we can find the most characters are agenda. Base on this result we can assume that Women villains have weaker images to audience")
 }

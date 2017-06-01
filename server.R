@@ -38,10 +38,7 @@ shinyServer(function(input, output) {
   output$table <- renderTable({
     return(GC_table(marvel.data))
   })
-  output$summary <- renderText({
-    return(GC_Summary())
-  })
-  
+
   # Living Status
   output$map <- renderPlotly({ 
     variable1.input <- switch(input$variable1, 
