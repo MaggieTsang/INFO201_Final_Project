@@ -99,18 +99,13 @@ shinyUI(navbarPage(
              ),
              # Show a plot of the generated distribution
              mainPanel(
-               h2("Introduction:"),
-               h4("This dataset is to show how gender affects the how a character identifies with their ID  and if they are living."),
-               plotlyOutput('map'),
-               h2("Conclusion:"),
-               h4("In conclusion this dataset shows that the male and female characters are more prevalent than genderfluid characters. Even if comics are more welcoming to females they still aren't as open to the LBGT characters. In this graph you can see that genderfluid characters are underepresented compared to female or male genders")
-
-             )
+               tabsetPanel(type = "tabs", 
+                           tabPanel("Intro", h2("Introduction:"),h4(ID_Intro())),
+                           tabPanel("Plot", plotlyOutput('map')), 
+                           tabPanel("Summary",h2("Summary:"), h4(ID_Summary())
+                           )
+               )
+               )
            )
-  ),
-  
-  tabPanel("Test tab",
-           fluidPage(
-             titlePanel("Test text")
-           ))
+  )
   ))
