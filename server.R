@@ -51,5 +51,4 @@ shinyServer(function(input, output) {
                               'Alive' = marvel.data$ALIVE)
     return(graphData(marvel.data, variable1.input, variable2.input, input$variable1, input$variable2))
   }) 
-  
 })
