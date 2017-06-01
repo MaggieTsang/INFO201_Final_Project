@@ -84,7 +84,7 @@ shinyUI(navbarPage(
            )),
   
   # Other Tabs
-  tabPanel('Gender and ID for Marvel Data',
+  tabPanel('ID and Living Status for Gender',
            # Application title
            titlePanel('Gender in relation to ID and living characters'),
            # Sidebar with a select input for both variables
