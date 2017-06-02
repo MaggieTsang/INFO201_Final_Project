@@ -8,6 +8,7 @@ source("./script/chart_year_sexualMinority.R")
 source("./script/introduction.R")
 source('./script/GenderID.R')
 source("./script/gender_characteristics.R")
+source('./script/gender_vs_mortality.R')
 
 shinyUI(navbarPage(
   "Comic Book Character Diversity",
@@ -112,5 +113,33 @@ shinyUI(navbarPage(
                )
              )
            )
-  ))
+  )),
+  tabPanel("Gender Mortality",
+           fluidPage(
+             titlePanel("Gender Comparisons of Mortality Rates"),
+             
+             sidebarLayout(
+               sidebarPanel(
+                 selectInput(inputId = "gendermort",
+                             label = "Gender:",
+                             choices = list("Male" = "Male Characters", "Female" =  "Female Characters","Agender" = 
+                                              "Agender Characters","Genderfluid" = "Genderfluid Characters","All" = "***"),
+                             selected = "All")
+               ),
+               
+               mainPanel(
+                 tabsetPanel(type = "tabs",
+                             tabPanel("Dataset",
+                                      h2("Introduction"),
+                                      h4("Visualizing the percentages of living and deceased characters between genders."),
+                                      plotlyOutput("genderMortality")),
+                             tabPanel("Conclusion",
+                                      h2("Conclusions Drawn:"),
+                                      GMConcl()
+                             )
+                             
+                 )
+               )
+             )
+           ))
   ))

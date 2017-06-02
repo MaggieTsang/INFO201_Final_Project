@@ -7,9 +7,11 @@ library(dplyr)
 source("./script/chart_year_sexualMinority.R")
 source("./script/gender_characteristics.R")
 source('./script/GenderID.R')
+source('./script/gender_vs_mortality.R')
 
 marvel.data <- read.csv("data/marvel-wikia-data.csv", stringsAsFactors = FALSE)
 colnames(marvel.data)[13]  <- "YEAR"
+colnames(marvel.data)[10] <- "ALIVE"
 dc.data <- read.csv("data/dc-wikia-data.csv", stringsAsFactors = FALSE)
 
 
@@ -42,5 +44,15 @@ shinyServer(function(input, output) {
   output$circlePlot <- renderPlot({
     user.selected <- input$user
     return(GenderID(marvel.data,user.selected))
+  })
+  
+  # Gender Mortality 
+  output$genderMortality <- renderPlotly({
+    gender.select <- input$gendermort
+    if(gender.select != "***") {
+      marvel.data <- marvel.data %>% 
+        filter(SEX == gender.select)
+    }
+    return(GenderMortality(marvel.data))
   })
 })
