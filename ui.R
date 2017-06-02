@@ -137,7 +137,6 @@ shinyUI(navbarPage(
                                       h2("Conclusions Drawn:"),
                                       GMConcl()
                              )
-                             
                  )
                )
              )
