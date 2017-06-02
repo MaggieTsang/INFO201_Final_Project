@@ -10,30 +10,52 @@ YearSexuality <- function(dataset) {
   colnames(plot.summary) <- c("YEAR", "str_freq", "gsm_freq")
   
   # Create and return graph with two trendlines
-  line.graph <- plot_ly(plot.summary, x = ~YEAR, y = ~str_freq, name = "Straight Characters", type = "scatter", mode = "lines") %>% 
-    add_trace(y = ~gsm_freq, name = "GSM Characters", type = "scatter", mode = "lines") %>%
-    layout(xaxis = list(title = "Year of First Appearance"), yaxis = list(title = "Character Frequency"), title = "Comparing Trends of Comic Character Sexual Minorities") %>%
+  line.graph <-
+    plot_ly(
+      plot.summary,
+      x = ~ YEAR,
+      y = ~ str_freq,
+      name = "Straight Characters",
+      type = "scatter",
+      mode = "lines"
+    ) %>%
+    add_trace(
+      y = ~ gsm_freq,
+      name = "GSM Characters",
+      type = "scatter",
+      mode = "lines"
+    ) %>%
+    layout(
+      xaxis = list(title = "Year of First Appearance"),
+      yaxis = list(title = "Character Frequency"),
+      title = "Comparing Trends of Comic Character Sexual Minorities"
+    ) %>%
     return()
 }
 
 GSMtable <- function(dataset) {
   # Straight character information
-  straight.characters <- dataset %>% filter(GSM == "", is.na(YEAR) == FALSE) %>% group_by(YEAR) %>% summarise(freq = n())
+  straight.characters <-
+    dataset %>% filter(GSM == "", is.na(YEAR) == FALSE) %>% group_by(YEAR) %>% summarise(freq = n())
   colnames(straight.characters) <- c("YEAR", "str_freq")
   
   # Non-straight character information
-  gsm.characters <- dataset %>% filter(GSM != "", is.na(YEAR) == FALSE) %>% group_by(YEAR) %>% summarise(freq = n())
+  gsm.characters <-
+    dataset %>% filter(GSM != "", is.na(YEAR) == FALSE) %>% group_by(YEAR) %>% summarise(freq = n())
   colnames(gsm.characters) <- c("YEAR", "gsm_freq")
   
   # Summarizes sexuality data, change N/A frequencies to zero
-  plot.summary <- left_join(straight.characters, gsm.characters, by = "YEAR")
+  plot.summary <-
+    left_join(straight.characters, gsm.characters, by = "YEAR")
   plot.summary[is.na(plot.summary)] <- 0
-  colnames(plot.summary) <- c("Year", "Total Straight Characters", "Total GSM Characters")
+  colnames(plot.summary) <-
+    c("Year", "Total Straight Characters", "Total GSM Characters")
   return(plot.summary)
 }
 
 GSMintro <- function() {
-  return("As the LGBTQ+ community faces discrimination and continues to fight for their equal rights,
+  return(
+    "As the LGBTQ+ community faces discrimination and continues to fight for their equal rights,
     this graph shows if comic book characters represent those of a sexual minority.
     The x-axis notes the year of a character's first appearance and the y-axis counts the
     total number of new characters that year. The blue line represents straight characters and
@@ -43,7 +65,8 @@ GSMintro <- function() {
 }
 
 GSMoutro <- function() {
-  return("As a general observation, there are many more straight characters then GSM characters.
+  return(
+    "As a general observation, there are many more straight characters then GSM characters.
     Female GSM characters are more common than Male GSM characters, and there are no Agender
     GSM characters. Interestingly, the years that have a higher frequency of GSM characters
     are aligned with real-life events. For example, GSM characters slightly rose in 1991, a year where

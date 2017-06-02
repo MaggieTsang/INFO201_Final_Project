@@ -1,4 +1,4 @@
-# Server-side of webpage
+# Server-side for Comic Book Character Diversity
 
 library(shiny)
 library(plotly)
@@ -11,8 +11,6 @@ source('./script/gender_vs_mortality.R')
 
 marvel.data <- read.csv("data/marvel-wikia-data.csv", stringsAsFactors = FALSE)
 colnames(marvel.data)[13]  <- "YEAR"
-colnames(marvel.data)[10] <- "ALIVE"
-dc.data <- read.csv("data/dc-wikia-data.csv", stringsAsFactors = FALSE)
 
 
 shinyServer(function(input, output) {
@@ -21,7 +19,7 @@ shinyServer(function(input, output) {
   output$year_gsm <- renderPlotly({
     # Show only selected gender. *** = all possible genders
     gender.selected <- input$gender
-    if(gender.selected != "***") {
+    if (gender.selected != "***") {
       marvel.data <- marvel.data %>% filter(SEX == gender.selected)
     }
     return(YearSexuality(marvel.data))
@@ -34,25 +32,26 @@ shinyServer(function(input, output) {
   # Gender vs Characteristics Tab
   output$circularPlot <- renderPlot({
     char_selected <- input$char
-    return(GenderCharacteristic(marvel.data,char_selected))
+    return(GenderCharacteristic(marvel.data, char_selected))
   })
   output$table <- renderTable({
     return(GC_table(marvel.data))
   })
-
+  
   # Identification status based on gender
   output$circlePlot <- renderPlot({
     user.selected <- input$user
-    return(GenderID(marvel.data,user.selected))
+    return(GenderID(marvel.data, user.selected))
   })
   
-  # Gender Mortality 
+  # Gender Mortality
   output$genderMortality <- renderPlotly({
     gender.select <- input$gendermort
-    if(gender.select != "***") {
-      marvel.data <- marvel.data %>% 
+    if (gender.select != "***") {
+      marvel.data <- marvel.data %>%
         filter(SEX == gender.select)
     }
     return(GenderMortality(marvel.data))
   })
+  
 })
