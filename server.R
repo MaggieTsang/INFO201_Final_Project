@@ -40,7 +40,7 @@ shinyServer(function(input, output) {
     return(GC_table(marvel.data))
   })
 
-  # Identification status
+  # Identification status based on gender
   output$circlePlot <- renderPlot({
     user.selected <- input$user
     return(GenderID(marvel.data,user.selected))

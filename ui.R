@@ -60,10 +60,8 @@ shinyUI(navbarPage(
   # Gender Characteristics Tabs
   tabPanel("Gender Characteristics",
            fluidPage(
-             
              # Application title
              titlePanel("Gender vs Characteristic"),
-             
              # Sidebar with radio button widget, select a characteristic type
              sidebarLayout(
                sidebarPanel(
