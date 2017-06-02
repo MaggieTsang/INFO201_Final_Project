@@ -64,6 +64,7 @@ shinyUI(navbarPage(
              # Application title
              titlePanel("Gender vs Characteristic"),
              
+             # Sidebar with radio button widget, select a characteristic type
              sidebarLayout(
                sidebarPanel(
                  radioButtons("char", "Characteristic type:",
@@ -114,6 +115,7 @@ shinyUI(navbarPage(
              )
            )
   )),
+  
   tabPanel("Gender Mortality",
            fluidPage(
              titlePanel("Gender Comparisons of Mortality Rates"),
